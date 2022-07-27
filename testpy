@@ -1,1 +1,34 @@
-#여러 코드를 돌려보는 임시 파일입니다.
+class Doggy:
+    num_of_dogs=0
+    birth_of_dogs=0
+
+    def __init__(self,name,breed):
+        self.name = name
+        self.breed = breed
+
+        Doggy.num_of_dogs +=1
+        Doggy.birth_of_dogs +=1
+
+    
+    def __del__(self):
+        Doggy.num_of_dogs-=1
+
+    
+    def bark(self):
+        print(f'{self.name}:멍멍')
+    
+    def get_status():
+        print(Doggy.birth_of_dogs)
+        print(Doggy.num_of_dogs)
+
+    
+dog1=Doggy('dog1','A')
+dog2=Doggy('dog2','B')
+
+dog1.bark()
+
+Doggy.get_status()
+
+del dog1
+
+Doggy.get_status()
