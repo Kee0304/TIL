@@ -24,7 +24,7 @@ for t in range(1,11):
                     tmp = stack.pop()                                       # pop하는데
                     while tmp != "(":                                       # pop 한 놈이 여는 괄호가 아닌 한
                         result.append(tmp)                                  # pop 한 놈을 결과에 넣고
-                        tmp = stack.pop()                                   # 다시 stack의 top을 pop
+                        tmp = stack.pop()                                   # 다시 stack의 top을 pop                이 경우 pop을 먼저 했으므로 
 
                 elif token == "*" or token == "/":                          # 곱하기나 나누기면
                     while stack and (stack[-1] == "*" or stack[-1] == "/"): # 스택이 차있는데 top이 곱하기나 나누기일 때까지
