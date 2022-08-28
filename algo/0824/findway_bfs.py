@@ -7,11 +7,10 @@ def bfs(v, N, t):       # v 시작, N 마지막 정점, t 찾는 정점
     visited[v]=1        # 시작점 방문 표시    
     while q:
         v=q.pop(0)      # dequeue
-        print(v)        # visit v
-        for w in adjlist[v]:
-            if visited[w]==0:  # 인접한 점 중 아직 방문하지 않은 점이 있으면
-                q.append(w)    # 방문한다.
-                visited[w] = visited[v]+1
+        if v==t:
+            return 1
+
+    return 0
 
 for _ in range(T):
     tc,E=map(int,input().split())
@@ -22,4 +21,4 @@ for _ in range(T):
         a,b=[i*2],arr[i*2+1]
         adjlist.append(b)
     
-    bfs(0,99)
+    bfs(0,99,99)
