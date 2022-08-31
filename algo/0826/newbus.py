@@ -10,7 +10,7 @@ for t in range(1,T+1):
         lst.append(list(map(int,input().split())))
 
     maxstop=max([lst[0][2],lst[1][2],lst[2][2]])
-    stop=[0]*(maxstop+1)
+    stop=[0]*(1000+1)
 
     for i in range(N):
         if lst[i][0]==1:

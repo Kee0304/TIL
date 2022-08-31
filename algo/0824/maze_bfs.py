@@ -14,6 +14,8 @@ def bfs(i,j,N):
             if 0<=ni<N and 0<=nj<N and maze[ni][nj]!=1 and visited[ni][nj]==0:
                 q.append((ni,nj))
                 visited[ni][nj] = visited[i][j]+1
+    
+    return 0
 
 for tc in range(1,T+1):
     N= int(input())
