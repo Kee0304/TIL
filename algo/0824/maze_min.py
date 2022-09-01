@@ -15,7 +15,7 @@ def dfs(i,j,s,N):
         return
 
 T = int(input())
-for r in range(1, T+1):
+for t in range(1, T+1):
     N= int(input())
     maze = [list(map(int,input())) for _ in range(N)]
     sti = -1
@@ -29,3 +29,5 @@ for r in range(1, T+1):
                 break
         if sti!=1:
             break
+
+        print(f'#{t} {dfs  }')

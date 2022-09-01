@@ -72,7 +72,7 @@ def switch(index):
     if lst[index]==0:
         lst[index]=1
     else:
-        lst[index]=1
+        lst[index]=0
 
 for _ in range(num_student):
     gender,num=map(int,input().split())
