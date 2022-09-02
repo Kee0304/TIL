@@ -34,5 +34,7 @@
 #    result.append(stack.pop())                                          # 스택에 있는 놈들을 하나씩 결과에 넣어준다.
 #
 #print(result)
-a='1     '
-print(list(map(int,a.split())))
+import itertools
+
+a=itertools.permutations([1,2,3,4,5])
+print(list(a))
