@@ -1,40 +1,47 @@
-#infix=list('(5+8)*((7+3)/2-3)')
-#stack = []
-#result = []
-#for token in infix:
-#
-#    if token.isdigit():                                                 # 숫자면
-#        result.append(token)                                            # 결과에 push
-#
-#    else:                                                               # 연산자면
-#        if not stack:                                                   # 스택이 비어있으면
-#            stack.append(token)                                         # 스택에 push
-#
-#        else:                                                           # 스택이 차있는데
-#            if token == "(":                                            # 여는 괄호면
-#                stack.append(token)                                     # 스택에 push
-#                print(stack)
-#            elif token == ")":                                          # 닫는 괄호면
-#                tmp = stack.pop()                                       # pop하는데
-#                while tmp != "(":                                       # pop 한 놈이 여는 괄호가 아닌 한
-#                    result.append(tmp)                                  # pop 한 놈을 결과에 넣고
-#                    tmp = stack.pop()                                   # 다시 stack의 top을 pop                이 경우 pop을 먼저 했으므로 쌍이 맞는 여는 괄호도 스택에서 사라짐
-#                    print(stack)
-#            elif token == "*" or token == "/":                          # 곱하기나 나누기면
-#                while stack and (stack[-1] == "*" or stack[-1] == "/"): # 스택이 차있는데 top이 곱하기나 나누기일 때까지
-#                    result.append(stack.pop())                          # pop하고 그 놈을 결과에 넣어줌
-#                stack.append(token)                                     # 스탯에 그 곱하기나 나누기인 놈을 넣어줌
-#                print(stack)
-#            elif token == "+" or token == "-":                          # 더하기나 빼기면
-#                while stack and stack[-1] != "(":                       # 스택이 차있고 top이 여는 괄호가 아닌 한
-#                    result.append(stack.pop())                          # pop하고 결과에 넣어주고
-#                stack.append(token)                                     # 스택에 그 더하기나 빼기인 놈을 넣어줌
-#                print(stack)
-#for _ in range(len(stack)):                                             # 순회를 마쳤으면
-#    result.append(stack.pop())                                          # 스택에 있는 놈들을 하나씩 결과에 넣어준다.
-#
-#print(result)
-import itertools
+def find_root(V):
+    for i in range(1, V+1):
+        if par[i]==0:
+            return i
 
-a=itertools.permutations([1,2,3,4,5])
-print(list(a))
+def preorder(n):
+    if n:
+        print(n)
+        preorder(ch1[n])
+        preorder(ch2[n])
+
+def inorder(n):
+    if n:
+        inorder(ch1[n])
+        print(n)
+        inorder(ch2[n])
+
+def postorder(n):
+    if n:
+        postorder(ch1[n])
+        postorder(ch2[n])
+        print(n)
+
+
+E=int(input())
+arr=list(map(int,input().split()))
+print(arr)
+V=E+1
+ch1=[0]*(V)
+ch2=[0]*(V)
+par=[0]*(V)
+for i in range(E-1):
+    p,c=arr[i*2],arr[(i*2)+1]
+    if ch1[p]==0:
+        ch1[p] = c
+    else:
+        ch2[p] = c
+    par[c]=p
+
+print(par)
+print(ch1)
+print(ch2)
+a=find_root(V)
+print(a)
+preorder(a)
+#inorder(a)
+#postorder(a)
