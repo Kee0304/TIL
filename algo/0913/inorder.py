@@ -1,5 +1,3 @@
-import sys
-sys.stdin=open('input.txt')
 
 def inorder(root):
     if int(ch1[root])!=0:                       # 만약 자식이 있으면
@@ -31,6 +29,9 @@ for t in range(1, 11):
             ch1[i]=anlist[i][2]
         elif len(anlist[i])==2:
             par[i]=[anlist[i][0],anlist[i][1]]
+    print(par)
+    print(ch1)
+    print(ch2)
     
     result=[]                                   # 결과를 저장할 리스트
     k=inorder(1)                                # root는 모든 테스트 케이스에서 1                         
