@@ -1,3 +1,3 @@
-import itertools
+#다들 힘들다 어렵다 하면서 척척 푸는 모습을 보면 참... 자괴감마저 드네요.
 
-print(list(itertools.combinations_with_replacement([1,2,3],5)))
+#구체적인 조언이 필요하다기 보다는 그냥 넋두리 한 번 해보고 싶었습니다.
