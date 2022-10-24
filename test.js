@@ -1,7 +1,12 @@
-const str = 'google'
-const repstr = str.replace(/ /g,'').split("")
-const reprevstr = repstr.reverse()
+const savedFile = {
+  name: 'profile',
+  extension: 'jpg',
+  size: 29930
+}
 
-console.log(str)
-console.log(repstr)
-console.log(reprevstr)
+function fileSummary(file) {
+  const { name, extension, size } = file;
+  console.log(`The file ${name}.${extension} is size of ${size} bytes.`)
+}
+
+fileSummary(savedFile)
