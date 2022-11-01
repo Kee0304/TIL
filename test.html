@@ -1,3 +1,43 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <div v-for="(num, index) in oddNumbers" :key="index">
+      <p>{{ num }}</p>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+  
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data:{
+        nums:[1,2,3,4,5,6]
+      },
+      computed: {
+        oddNumbers: function() {
+          return this.nums.filter((num) =>{
+            return num % 2 == 1
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,44 +47,37 @@
   <title>Document</title>
 </head>
 <body>
-  <button>야옹아 이리온</button>
-  <button id="doggy">멍멍아 이리온</button>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <div id="cat">
+    <div>
+      <img :src="catImgurl" alt="catimg" v-if="isExisted">
+    </div>
+    <button @click="getUrl">Get Cat</button>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
-    console.log('고양이는 야옹')
-    const catImageSearchURL = 'https://api.thecatapi.com/v1/images/search'
-    const btn = document.querySelector('button')
-
-    const dogImageURL = 'https://dog.ceo/api/breeds/image/random'
-    const dogBtn = document.querySelector('#doggy')
-
-    btn.addEventListener('click', function () {
-      axios.get(catImageSearchURL)
-        .then((response) => {
-          imgElem = document.createElement('img')
-          imgElem.setAttribute('src', response.data[0].url)
-          document.body.appendChild(imgElem)
-        })
-        .catch((error) => { 
-          console.log('실패했다옹')
-        })
-        console.log('야옹야옹') 
-    })
-
-    dogBtn.addEventListener('click', function() {
-        axios.get(dogImageURL)
+    const cat = new Vue({
+      el:'#cat',
+      data:{
+        catImgurl:'',
+        isExisted: false,
+      },
+      methods:{
+        getUrl: function() {
+          axios({
+            method:'get',
+            url: "https://api.thecatapi.com/v1/images/search"
+          })
           .then((response) => {
-            dogImg = document.createElement('img')
-            console.log(response)
-            dogImg.setAttribute('src', response.data.message)
-            document.body.appendChild(dogImg)
+            const Imgurl = response.data[0].url
+            this.catImgurl = Imgurl
+            this.isExisted = true
+            
           })
-          .catch((error) => {
-            console.log('실패했다왕')
-          })
-        console.log('멍멍')
+        }
+      }
     })
   </script>
 </body>
